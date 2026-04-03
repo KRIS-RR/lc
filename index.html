@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury &amp; Comfort Kriopigi — Premium Holiday Apartment in Halkidiki, Greece</title>
+<meta name="description" content="A stylish 2-bedroom retreat in Kriopigi, Halkidiki. Private terrace, lemon garden, and Mediterranean charm for families, couples, and peaceful escapes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   CSS VARIABLES & RESET
+   ============================================ */
+:root {
+  --gold: #C9A96E;
+  --gold-light: #D4B87A;
+  --gold-dark: #B8944F;
+  --black: #0A0A0A;
+  --charcoal: #1A1A1A;
+  --charcoal-light: #2A2A2A;
+  --beige: #F5F0E8;
+  --beige-dark: #E8DFD0;
+  --cream: #FAF8F4;
+  --white: #FFFFFF;
+  --text-light: #B0A89A;
+  --text-muted: #7A7268;
+  --font-heading: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Outfit', 'Helvetica Neue', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--beige);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; font-family: var(--font-body); }
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.5rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.5s ease;
+}
+.navbar.scrolled {
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(15px);
+  padding: 0.85rem 2rem;
+  border-bottom: 1px solid rgba(201,169,110,0.12);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.nav-logo-mark {
+  font-family: var(--font-heading);
+  font-size: 1.5rem; font-weight: 500;
+  color: var(--gold);
+}
+.nav-logo-text {
+  font-size: 0.6rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-light);
+  font-weight: 300;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.75rem; letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 300;
+  color: var(--beige); transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold); transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.nav-cta {
+  display: inline-block;
+  background: var(--gold); color: var(--black);
+  padding: 0.6rem 1.4rem;
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  transition: all 0.3s;
+}
+.nav-cta:hover {
+  background: var(--gold-light);
+  box-shadow: 0 8px 30px rgba(201,169,110,0.25);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; z-index: 110;
+}
+.hamburger span {
+  display: block; width: 24px; height: 1.5px;
+  background: var(--beige); transition: all 0.4s;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+/* Mobile Menu */
+.mobile-nav {
+  position: fixed; inset: 0; z-index: 105;
+  background: rgba(10,10,10,0.97);
+  backdrop-filter: blur(25px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1.8rem;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.mobile-nav.open { transform: translateX(0); }
+.mobile-nav a {
+  font-family: var(--font-heading);
+  font-size: 1.6rem; font-weight: 300;
+  color: var(--beige); letter-spacing: 0.03em;
+  transition: color 0.3s;
+}
+.mobile-nav a:hover { color: var(--gold); }
+
+@media (max-width: 860px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none; }
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80');
+  background-size: cover; background-position: center;
+  animation: heroZoom 25s ease-in-out infinite alternate;
+}
+@keyframes heroZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(10,10,10,0.35) 0%,
+    rgba(10,10,10,0.1) 35%,
+    rgba(10,10,10,0.25) 60%,
+    rgba(10,10,10,0.88) 100%
+  );
+}
+.hero-content {
+  position: relative; z-index: 5;
+  text-align: center;
+  max-width: 860px; padding: 0 1.5rem;
+}
+.hero-location {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(201,169,110,0.12);
+  border: 1px solid rgba(201,169,110,0.25);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1.3rem; border-radius: 50px;
+  font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 2rem;
+}
+.hero-location svg { flex-shrink: 0; }
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.hero h1 em {
+  color: var(--gold); font-style: italic;
+}
+.hero-sub {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-weight: 200; color: rgba(245,240,232,0.8);
+  margin-bottom: 2.5rem; letter-spacing: 0.02em;
+}
+.hero-btns {
+  display: flex; gap: 1rem;
+  justify-content: center; flex-wrap: wrap;
+}
+
+/* Rating Badge */
+.hero-rating {
+  position: absolute; right: 2.5rem; top: 50%;
+  transform: translateY(-50%); z-index: 5;
+  background: rgba(10,10,10,0.65);
+  border: 1px solid rgba(201,169,110,0.25);
+  backdrop-filter: blur(12px);
+  padding: 1.2rem 1rem; text-align: center;
+  border-radius: 4px;
+}
+.hero-rating-num {
+  font-family: var(--font-heading);
+  font-size: 2.2rem; color: var(--gold);
+  font-weight: 600; line-height: 1;
+}
+.hero-rating-label {
+  font-size: 0.58rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-light);
+  margin-top: 0.2rem;
+}
+.hero-rating-stars {
+  display: flex; gap: 2px; justify-content: center;
+  margin-top: 0.35rem; color: var(--gold); font-size: 0.65rem;
+}
+
+@media (max-width: 768px) {
+  .hero-rating {
+    right: auto; top: auto; bottom: 7.5rem;
+    left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Scroll Indicator */
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%;
+  transform: translateX(-50%); z-index: 5;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0.5rem;
+}
+.scroll-hint-text {
+  font-size: 0.55rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.scroll-hint-line {
+  width: 1px; height: 36px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-primary {
+  display: inline-block;
+  background: var(--gold); color: var(--black);
+  padding: 0.95rem 2.4rem;
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  transition: all 0.4s;
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 35px rgba(201,169,110,0.3);
+}
+.btn-outline {
+  display: inline-block;
+  background: transparent; color: var(--beige);
+  padding: 0.95rem 2.4rem;
+  font-size: 0.75rem; font-weight: 300;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  border: 1px solid rgba(245,240,232,0.25);
+  transition: all 0.4s;
+}
+.btn-outline:hover {
+  border-color: var(--gold); color: var(--gold);
+  background: rgba(201,169,110,0.06);
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+  padding: 6.5rem 2rem;
+}
+.section--dark { background: var(--black); }
+.section--charcoal { background: var(--charcoal); }
+.container {
+  max-width: 1140px; margin: 0 auto;
+}
+.section-label {
+  font-size: 0.65rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.8rem; font-weight: 400;
+}
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  font-weight: 300; color: var(--beige);
+  margin-bottom: 1.2rem; line-height: 1.15;
+}
+.section-title em {
+  color: var(--gold); font-style: italic;
+}
+.section-divider {
+  width: 55px; height: 1px;
+  background: var(--gold); margin-bottom: 1.8rem;
+}
+.section-divider--center { margin-left: auto; margin-right: auto; }
+
+/* ============================================
+   INTRO (ABOUT PREVIEW)
+   ============================================ */
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.intro-img {
+  position: relative; overflow: hidden;
+  border-radius: 2px;
+}
+.intro-img img {
+  width: 100%; height: 420px;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.intro-img:hover img { transform: scale(1.04); }
+.intro-img-badge {
+  position: absolute; bottom: 1.5rem; left: 1.5rem;
+  background: rgba(10,10,10,0.7);
+  border: 1px solid rgba(201,169,110,0.2);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1.25rem; border-radius: 3px;
+}
+.intro-img-badge span {
+  font-family: var(--font-heading);
+  font-size: 1.2rem; color: var(--gold);
+  font-weight: 500;
+}
+.intro-img-badge small {
+  display: block; font-size: 0.6rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted); margin-top: 0.1rem;
+}
+.intro-text p {
+  font-size: 1rem; line-height: 1.9;
+  color: var(--text-light); font-weight: 200;
+  margin-bottom: 1.5rem;
+}
+.intro-stats {
+  display: flex; gap: 2.5rem; margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.intro-stat-num {
+  font-family: var(--font-heading);
+  font-size: 2.4rem; color: var(--gold); font-weight: 300;
+}
+.intro-stat-num small {
+  font-size: 1rem;
+}
+.intro-stat-label {
+  font-size: 0.65rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 860px) {
+  .intro { grid-template-columns: 1fr; gap: 2.5rem; }
+  .intro-img img { height: 300px; }
+}
+
+/* ============================================
+   AMENITIES PREVIEW
+   ============================================ */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+}
+.amenity-card {
+  background: rgba(42,42,42,0.35);
+  border: 1px solid rgba(201,169,110,0.08);
+  border-radius: 3px;
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+.amenity-card:hover {
+  background: rgba(42,42,42,0.55);
+  border-color: rgba(201,169,110,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+}
+.amenity-icon {
+  width: 42px; height: 42px;
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 0.9rem; color: var(--gold);
+  transition: all 0.4s;
+}
+.amenity-card:hover .amenity-icon {
+  background: var(--gold); color: var(--black);
+  border-color: var(--gold);
+}
+.amenity-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem; font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.amenity-card p {
+  font-size: 0.72rem; color: var(--text-muted);
+  font-weight: 200;
+}
+
+/* ============================================
+   HIGHLIGHTS (WHY GUESTS LOVE IT)
+   ============================================ */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+.highlight-card {
+  background: rgba(42,42,42,0.35);
+  border: 1px solid rgba(201,169,110,0.08);
+  border-radius: 3px;
+  padding: 2.5rem 1.5rem; text-align: center;
+  transition: all 0.5s ease;
+}
+.highlight-card:hover {
+  background: rgba(42,42,42,0.55);
+  border-color: rgba(201,169,110,0.25);
+  transform: translateY(-5px);
+}
+.highlight-card .icon {
+  font-size: 1.6rem; margin-bottom: 1rem;
+  color: var(--gold);
+}
+.highlight-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem; font-weight: 400;
+  margin-bottom: 0.6rem;
+}
+.highlight-card p {
+  font-size: 0.85rem; color: var(--text-muted);
+  font-weight: 200; line-height: 1.7;
+}
+
+/* ============================================
+   NEARBY PREVIEW
+   ============================================ */
+.nearby-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+}
+.nearby-card {
+  background: rgba(42,42,42,0.35);
+  border: 1px solid rgba(201,169,110,0.08);
+  border-radius: 3px; overflow: hidden;
+  transition: all 0.5s ease;
+}
+.nearby-card:hover {
+  border-color: rgba(201,169,110,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+}
+.nearby-card-img {
+  width: 100%; height: 200px;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.nearby-card:hover .nearby-card-img { transform: scale(1.05); }
+.nearby-card-body { padding: 1.4rem; }
+.nearby-card-body h4 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem; font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.nearby-card-body .distance {
+  font-size: 0.7rem; color: var(--gold);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.nearby-card-body p {
+  font-size: 0.8rem; color: var(--text-muted);
+  font-weight: 200; line-height: 1.6;
+}
+
+/* ============================================
+   CTA BANNER
+   ============================================ */
+.cta-banner {
+  position: relative;
+  padding: 5rem 2rem;
+  text-align: center;
+  background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1920&q=80');
+  background-size: cover; background-position: center;
+  background-attachment: fixed;
+}
+.cta-banner::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(10,10,10,0.7);
+}
+.cta-banner .cta-inner {
+  position: relative; z-index: 2;
+}
+.cta-banner h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300; color: var(--white);
+  margin-bottom: 1rem;
+}
+.cta-banner p {
+  font-size: 1rem; color: var(--text-light);
+  font-weight: 200; margin-bottom: 2rem;
+  max-width: 500px; margin-left: auto; margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .cta-banner { background-attachment: scroll; }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--black);
+  border-top: 1px solid rgba(201,169,110,0.1);
+  padding: 4rem 2rem 2rem;
+}
+.footer-top {
+  max-width: 1140px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.4rem; color: var(--gold);
+  font-weight: 500; margin-bottom: 0.4rem;
+}
+.footer-brand-loc {
+  font-size: 0.75rem; color: var(--text-muted);
+  font-weight: 200; margin-bottom: 1rem;
+}
+.footer-brand-desc {
+  font-size: 0.85rem; color: var(--text-muted);
+  font-weight: 200; line-height: 1.7;
+  max-width: 320px;
+}
+.footer-col h5 {
+  font-family: var(--font-heading);
+  font-size: 1rem; font-weight: 400;
+  color: var(--beige); margin-bottom: 1rem;
+}
+.footer-col a {
+  display: block; font-size: 0.8rem;
+  color: var(--text-muted); font-weight: 200;
+  margin-bottom: 0.6rem; transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-social {
+  display: flex; gap: 0.6rem; margin-top: 1rem;
+}
+.footer-social a {
+  width: 38px; height: 38px;
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-light); font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.footer-social a:hover {
+  border-color: var(--gold); color: var(--gold);
+  transform: translateY(-2px);
+}
+.footer-bottom {
+  max-width: 1140px; margin: 0 auto;
+  border-top: 1px solid rgba(201,169,110,0.08);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.72rem; color: var(--text-muted);
+  font-weight: 200;
+}
+
+@media (max-width: 860px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+@media (max-width: 580px) {
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+.reveal {
+  opacity: 0; transform: translateY(35px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 580px) {
+  .section { padding: 4rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==========================================
+     NAVIGATION
+     ========================================== -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-mark">L&C</span>
+    <span class="nav-logo-text">Kriopigi</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">The Property</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="amenities.html">Amenities</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="about.html" onclick="toggleMenu()">The Property</a>
+  <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
+  <a href="amenities.html" onclick="toggleMenu()">Amenities</a>
+  <a href="reviews.html" onclick="toggleMenu()">Reviews</a>
+  <a href="faq.html" onclick="toggleMenu()">FAQ</a>
+  <a href="contact.html" onclick="toggleMenu()">Book Your Stay</a>
+</div>
+
+<!-- ==========================================
+     HERO SECTION
+     ========================================== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-rating">
+    <div class="hero-rating-num">9.7</div>
+    <div class="hero-rating-label">Exceptional</div>
+    <div class="hero-rating-stars">★ ★ ★ ★ ★</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-location">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Kriopigi, Halkidiki — Greece
+    </div>
+    <h1>Luxury &amp; Comfort<br>in the Heart of <em>Kriopigi</em></h1>
+    <p class="hero-sub">A stylish retreat for families, couples and peaceful escapes.</p>
+    <div class="hero-btns">
+      <a href="contact.html" class="btn-primary">Book Your Stay</a>
+      <a href="gallery.html" class="btn-outline">View Gallery</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span class="scroll-hint-text">Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- ==========================================
+     INTRO / ABOUT PREVIEW
+     ========================================== -->
+<section class="section section--charcoal">
+  <div class="container">
+    <div class="intro">
+      <div class="intro-img reveal">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80" alt="Terrace of Luxury and Comfort Kriopigi">
+        <div class="intro-img-badge">
+          <span>Est. 2023</span>
+          <small>Halkidiki, Greece</small>
+        </div>
+      </div>
+      <div class="intro-text">
+        <p class="section-label reveal">Welcome</p>
+        <h2 class="section-title reveal">Your Home in <em>Halkidiki</em></h2>
+        <div class="section-divider reveal"></div>
+        <p class="reveal">
+          Nestled in the serene village of Kriopigi, our thoughtfully designed two-bedroom apartment blends modern comfort with the timeless charm of Halkidiki. Wake to the gentle rustle of lemon trees in the garden, enjoy your morning coffee on the sun-drenched terrace, and spend your days exploring golden beaches just moments away.
+        </p>
+        <p class="reveal">
+          Whether you're seeking a romantic escape, a family retreat, or a quiet place to work remotely, every detail has been considered — so you can simply relax and enjoy.
+        </p>
+        <div class="intro-stats reveal">
+          <div>
+            <div class="intro-stat-num">2</div>
+            <div class="intro-stat-label">Bedrooms</div>
+          </div>
+          <div>
+            <div class="intro-stat-num">4</div>
+            <div class="intro-stat-label">Guests</div>
+          </div>
+          <div>
+            <div class="intro-stat-num">1.5<small>km</small></div>
+            <div class="intro-stat-label">To Beach</div>
+          </div>
+        </div>
+        <div class="reveal" style="margin-top:2rem;">
+          <a href="about.html" class="btn-outline">Discover More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     FEATURED AMENITIES
+     ========================================== -->
+<section class="section section--dark">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <p class="section-label reveal">What We Offer</p>
+      <h2 class="section-title reveal">Premium <em>Amenities</em></h2>
+      <div class="section-divider section-divider--center reveal"></div>
+    </div>
+    <div class="amenities-grid">
+
+      <div class="amenity-card reveal reveal-d1">
+        <div class="amenity-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0"/><circle cx="12" cy="18" r="1"/></svg>
+        </div>
+        <h4>Fast Wi-Fi</h4>
+        <p>Stream &amp; work remotely</p>
+      </div>
+
+      <div class="amenity-card reveal reveal-d2">
+        <div class="amenity-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3v2m0 14v2M3 12h2m14 0h2"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <h4>Air Conditioning</h4>
+        <p>Cool comfort always</p>
+      </div>
+
+      <div class="amenity-card reveal reveal-d3">
+        <div class="amenity-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+        </div>
+        <h4>Full Kitchen</h4>
+        <p>Fully equipped</p>
+      </div>
+
+      <div class="amenity-card reveal reveal-d4">
+        <div class="amenity-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M12 18v3M8 21h8"/></svg>
+        </div>
+        <h4>Smart TV</h4>
+        <p>Entertainment ready</p>
+      </div>
+
+      <div class="amenity-card reveal reveal-d1">
+        <div class="amenity-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3c-1.5 3-4 5-4 8a4 4 0 008 0c0-3-2.5-5-4-8z"/><path d="M8 21h8"/></svg>
+        </div>
+        <h4>Lemon Garden</h4>
+        <p>Fragrant &amp; peaceful</p>
+      </div>
+
+      <div class="amenity-card reveal reveal-d2">
+        <div class="amenity-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 12h2l3-9 4 18 4-18 3 9h2"/></svg>
+        </div>
+        <h4>Large Terrace</h4>
+        <p>Al fresco dining</p>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+      <a href="amenities.html" class="btn-outline">View All Amenities</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     WHY GUESTS LOVE IT
+     ========================================== -->
+<section class="section section--charcoal">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <p class="section-label reveal">Experience</p>
+      <h2 class="section-title reveal">Why Guests <em>Love It</em></h2>
+      <div class="section-divider section-divider--center reveal"></div>
+    </div>
+    <div class="highlights-grid">
+      <div class="highlight-card reveal reveal-d1">
+        <div class="icon">✦</div>
+        <h4>Spacious &amp; Spotless</h4>
+        <p>Meticulously maintained with generous space for everyone to feel at home.</p>
+      </div>
+      <div class="highlight-card reveal reveal-d2">
+        <div class="icon">✦</div>
+        <h4>Beautiful Terrace &amp; Garden</h4>
+        <p>Relax under the lemon trees or dine under the stars on the spacious terrace.</p>
+      </div>
+      <div class="highlight-card reveal reveal-d3">
+        <div class="icon">✦</div>
+        <h4>Quiet Yet Connected</h4>
+        <p>Peaceful surroundings, yet minutes from restaurants, shops, and the beach.</p>
+      </div>
+      <div class="highlight-card reveal reveal-d4">
+        <div class="icon">✦</div>
+        <h4>Families &amp; Remote Work</h4>
+        <p>Fast Wi-Fi and a calm environment — ideal for families and digital nomads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     NEARBY DESTINATIONS PREVIEW
+     ========================================== -->
+<section class="section section--dark">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <p class="section-label reveal">Discover</p>
+      <h2 class="section-title reveal">Nearby <em>Places</em></h2>
+      <div class="section-divider section-divider--center reveal"></div>
+    </div>
+    <div class="nearby-grid">
+      <div class="nearby-card reveal reveal-d1">
+        <div style="overflow:hidden;">
+          <img class="nearby-card-img" src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=600&q=80" alt="Kriopigi Beach" loading="lazy">
+        </div>
+        <div class="nearby-card-body">
+          <h4>Kriopigi Beach</h4>
+          <p class="distance">1.5 km away</p>
+          <p>Crystal clear waters and golden sand in a beautiful cove setting.</p>
+        </div>
+      </div>
+      <div class="nearby-card reveal reveal-d2">
+        <div style="overflow:hidden;">
+          <img class="nearby-card-img" src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?w=600&q=80" alt="Kallithea" loading="lazy">
+        </div>
+        <div class="nearby-card-body">
+          <h4>Kallithea</h4>
+          <p class="distance">4 km away</p>
+          <p>Famous for thermal springs, vibrant nightlife, and stunning beaches.</p>
+        </div>
+      </div>
+      <div class="nearby-card reveal reveal-d3">
+        <div style="overflow:hidden;">
+          <img class="nearby-card-img" src="https://images.unsplash.com/photo-1601204778946-1a4da8081663?w=600&q=80" alt="Afytos" loading="lazy">
+        </div>
+        <div class="nearby-card-body">
+          <h4>Afytos</h4>
+          <p class="distance">6 km away</p>
+          <p>A picturesque village with stone architecture and panoramic sea views.</p>
+        </div>
+      </div>
+      <div class="nearby-card reveal reveal-d4">
+        <div style="overflow:hidden;">
+          <img class="nearby-card-img" src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&q=80" alt="Thessaloniki Airport" loading="lazy">
+        </div>
+        <div class="nearby-card-body">
+          <h4>Thessaloniki Airport</h4>
+          <p class="distance">85 km away</p>
+          <p>International connections with an easy scenic drive along the coast.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     CTA BANNER
+     ========================================== -->
+<section class="cta-banner">
+  <div class="cta-inner">
+    <h2 class="reveal">Begin Your <em style="color:var(--gold);font-family:var(--font-heading);font-style:italic;">Halkidiki</em> Escape</h2>
+    <p class="reveal">Reserve your dates and experience the Mediterranean at its finest.</p>
+    <a href="contact.html" class="btn-primary reveal">Request Availability</a>
+  </div>
+</section>
+
+<!-- ==========================================
+     FOOTER
+     ========================================== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Luxury &amp; Comfort Kriopigi</div>
+      <div class="footer-brand-loc">Kriopigi, Halkidiki, Greece</div>
+      <p class="footer-brand-desc">A premium two-bedroom apartment surrounded by lemon trees, a spacious terrace, and the warm hospitality of Halkidiki.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">&#9679;</a>
+        <a href="#" aria-label="Facebook">&#9679;</a>
+        <a href="#" aria-label="Airbnb">&#9679;</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <a href="index.html">Home</a>
+      <a href="about.html">The Property</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="amenities.html">Amenities</a>
+    </div>
+    <div class="footer-col">
+      <h5>Guest Info</h5>
+      <a href="reviews.html">Reviews</a>
+      <a href="faq.html">FAQ &amp; House Rules</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h5>Book Via</h5>
+      <a href="#">Booking.com</a>
+      <a href="#">Airbnb</a>
+      <a href="#">WhatsApp</a>
+      <a href="contact.html">Direct Inquiry</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2025 Luxury &amp; Comfort Kriopigi. All rights reserved.</p>
+    <p class="footer-copy" style="color:var(--text-muted);">Designed with care in Halkidiki.</p>
+  </div>
+</footer>
+
+<!-- ==========================================
+     SCRIPTS
+     ========================================== -->
+<script>
+// Navbar scroll
+window.addEventListener('scroll', function() {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobileNav').classList.contains('open') ? 'hidden' : '';
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(function(el) { observer.observe(el); });
+</script>
+
+</body>
+</html>
